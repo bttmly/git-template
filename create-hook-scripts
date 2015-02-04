@@ -1,0 +1,23 @@
+#!/usr/local/bin/coffee
+
+fs = require "fs"
+path = require "path"
+exec = require "sync-exec"
+
+hooks = require "./hook-names"
+
+hooks.forEach (hook) ->
+  # name = dir.slice 1
+
+  dir = path.join __dirname, "hooks", "_#{hook}"
+  script = path.join __dirname, "hooks", hook
+  runScriptPath = path.join __dirname, "run-scripts-for-hook.coffee"
+
+  code = """
+    #!/usr/local/bin/coffee
+    name = "#{hook}"
+    require("#{runScriptPath}")("#{dir}")
+  """
+
+  fs.writeFileSync script, code
+  fs.chmodSync script, '755'

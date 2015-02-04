@@ -1,0 +1,7 @@
+{
+  ".js": "node",
+  ".coffee": "coffee",
+  ".py": "python",
+  ".rb": "ruby",
+  ".sh": "sh"
+}
