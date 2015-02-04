@@ -45,4 +45,4 @@ hooks/post-receive
 hooks/post-update
 hooks/pre-auto-gc
 hooks/post-rewrite
-hooks/pre-pus
+hooks/pre-push
