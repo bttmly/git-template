@@ -26,4 +26,6 @@ exit(code) unless code is 0
 
 {code} = exec "npm run gen-scripts"
 
+exec ls "hooks"
+
 cd START_DIR
