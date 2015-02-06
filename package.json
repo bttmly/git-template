@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "repository": "https://github.com/nickb1080/git-template",
   "scripts": {
     "gen-scripts": "coffee ./create-hook-scripts"
   },
@@ -10,6 +11,7 @@
   "license": "MIT",
   "dependencies": {
     "coffee-script": "^1.9.0",
+    "rimraf": "^2.2.8",
     "shelljs": "^0.3.0",
     "sync-exec": "^0.4.0"
   }

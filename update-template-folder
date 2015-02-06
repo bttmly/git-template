@@ -1,5 +1,8 @@
 #!/usr/local/bin/coffee
 
+rimraf = require "rimraf"
+
+# shelljs rm -rf doesn't seem to work
 require "shelljs/global"
 
 TEMPLATE_DIR_LOCATION = "~/.git_template"
@@ -8,7 +11,8 @@ REPO_URL = "https://github.com/nickb1080/git-template"
 
 START_DIR = do pwd
 
-rm "-rf", TEMPLATE_DIR_LOCATION
+{code} = exec "rm -rf #{TEMPLATE_DIR_LOCATION}"
+exit(code) unless code is 0
 
 {code} = exec "git clone #{REPO_URL} #{TEMPLATE_DIR_LOCATION}"
 exit(code) unless code is 0
@@ -16,7 +20,8 @@ exit(code) unless code is 0
 {code} = exec "git config --global init.templatedir #{TEMPLATE_DIR_LOCATION}"
 exit(code) unless code is 0
 
-cd TEMPLATE_DIR_LOCATION
+{code} = exec "cd #{TEMPLATE_DIR_LOCATION}"
+exit(code) unless code is 0
 
 {code} = exec "git init"
 exit(code) unless code is 0
@@ -26,6 +31,6 @@ exit(code) unless code is 0
 
 {code} = exec "npm run gen-scripts"
 
-exec ls "hooks"
+console.log "git templates updated in #{TEMPLATE_DIR_LOCATION}"
 
 cd START_DIR
