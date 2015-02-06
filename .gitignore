@@ -29,6 +29,8 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
+.DS_Store
+
 hooks/applypatch-msg
 hooks/pre-applypatch
 hooks/post-applypatch
