@@ -1,0 +1,19 @@
+#!/usr/local/bin/coffee
+
+require "shelljs/global"
+
+TEMPLATE_DIR_LOCATION = "~/.git_template"
+
+REPO_URL = "https://github.com/nickb1080/git-template"
+
+rm "-rf", TEMPLATE_DIR_LOCATION
+
+{code} = exec "git clone #{REPO_URL} #{TEMPLATE_DIR_LOCATION}"
+exit(code) unless code is 0
+
+{code} = exec "git config --global init.templatedir #{TEMPLATE_DIR_LOCATION}"
+exit(code) unless code is 0
+
+cd TEMPLATE_DIR_LOCATION
+
+{code} = exec "git init"
