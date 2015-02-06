@@ -6,6 +6,8 @@ TEMPLATE_DIR_LOCATION = "~/.git_template"
 
 REPO_URL = "https://github.com/nickb1080/git-template"
 
+START_DIR = do pwd
+
 rm "-rf", TEMPLATE_DIR_LOCATION
 
 {code} = exec "git clone #{REPO_URL} #{TEMPLATE_DIR_LOCATION}"
@@ -17,3 +19,11 @@ exit(code) unless code is 0
 cd TEMPLATE_DIR_LOCATION
 
 {code} = exec "git init"
+exit(code) unless code is 0
+
+{code} = exec "npm install"
+exit(code) unless code is 0
+
+{code} = exec "npm run gen-scripts"
+
+cd START_DIR
